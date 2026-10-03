@@ -1,0 +1,23 @@
+name: App permission probe
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  permission-probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mint repository-scoped installation token
+        id: app
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+          permission-contents: write
+      - name: Verify effective repository permission
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY" --jq '{contents_write: .permissions.push}' > permission.json
+          cat permission.json
+          test "$(jq -r .contents_write permission.json)" = true
