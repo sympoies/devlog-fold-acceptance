@@ -1,0 +1,14 @@
+## 1979-01-01 - Final retry racer
+<!-- devlog-id: 1979-01-01-final-racer -->
+
+### Result
+
+- Advance the protected tip during the corrected publisher run.
+
+### Why / context
+
+- Exercise a real rejected stale ref with no timing seam.
+
+### Evidence
+
+- Reviewed fixture PR and real reusable fold workflow.
