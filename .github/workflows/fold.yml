@@ -1,0 +1,16 @@
+name: Scheduled devlog fold
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  fold:
+    uses: sympoies/agent-runtime-kit/.github/workflows/devlog-fold.yml@03baaf02b9ba9800fe33eeee1bb0eba9deef04f8
+    with:
+      log-dir: docs/devlog
+    secrets:
+      BOT_APP_ID: ${{ secrets.BOT_APP_ID }}
+      BOT_APP_PRIVATE_KEY: ${{ secrets.BOT_APP_PRIVATE_KEY }}
