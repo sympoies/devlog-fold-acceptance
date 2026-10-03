@@ -18,6 +18,11 @@ jobs:
           GH_TOKEN: ${{ steps.app.outputs.token }}
         run: |
           set -euo pipefail
-          gh api "repos/$GITHUB_REPOSITORY" --jq '{contents_write: .permissions.push}' > permission.json
+          # Installation-token repository collaborator booleans do not prove
+          # the token grant. An unreferenced blob exercises Contents: write
+          # without changing a branch, commit, workflow or repository file.
+          gh api --method POST "repos/$GITHUB_REPOSITORY/git/blobs" \
+            -f content='Development log permission probe' -f encoding=utf-8 \
+            --jq '{blob_write: (.sha | length == 40)}' > permission.json
           cat permission.json
-          test "$(jq -r .contents_write permission.json)" = true
+          test "$(jq -r .blob_write permission.json)" = true
