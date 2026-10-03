@@ -8,7 +8,7 @@ permissions:
   id-token: write
 jobs:
   fold:
-    uses: sympoies/agent-runtime-kit/.github/workflows/devlog-fold.yml@03baaf02b9ba9800fe33eeee1bb0eba9deef04f8
+    uses: sympoies/agent-runtime-kit/.github/workflows/devlog-fold.yml@944cdb74dd3534ebbf6a7a5d3bae510a8808ac92
     with:
       log-dir: docs/devlog
     secrets:
