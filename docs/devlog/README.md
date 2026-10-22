@@ -6,6 +6,7 @@ files are owned by the fold job.
 
 ## Months
 
+- [2026-10](2026-10.md)
 - [2010-04](2010-04.md)
 - [2010-03](2010-03.md)
 - [2010-02](2010-02.md)
@@ -213,5 +214,3 @@ files are owned by the fold job.
 ## Pending
 
 <!-- devlog-pending-index -->
-
-- [2026-10-03-today](pending/2026-10-03-today.md)
