@@ -8,7 +8,8 @@ permissions:
   id-token: write
 jobs:
   fold:
-    uses: sympoies/agent-runtime-kit/.github/workflows/devlog-fold.yml@944cdb74dd3534ebbf6a7a5d3bae510a8808ac92
+    # Pin the merged implementation so it remains reachable after branch cleanup.
+    uses: sympoies/agent-runtime-kit/.github/workflows/devlog-fold.yml@8174ef35cc8dbd38b0e426921b09e99226b3d9fc # merged in upstream PR #221
     with:
       log-dir: docs/devlog
     secrets:
